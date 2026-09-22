@@ -1,7 +1,6 @@
 id,date,category,description,amount,payment_method
 1,2026-09-01,Food,Breakfast,250.0,UPI
 2,2026-09-02,Travel,Office cab,600.0,Credit Card
-3,2026-09-03,Shopping,Groceries,1800.0,Debit Card
 4,2026-09-04,Bills,Electricity bill,2200.0,UPI
 5,2026-09-05,Food,Lunch,450.0,Cash
 6,2026-09-06,Entertainment,Movie tickets,800.0,Credit Card
@@ -11,3 +10,4 @@ id,date,category,description,amount,payment_method
 10,2026-09-10,Bills,Internet bill,999.0,Credit Card
 11,2026-09-11,Health,Pharmacy,650.0,Cash
 12,2026-09-12,Food,"Dinner, family outing",1200.0,UPI
+13,2026-09-22,Travel,Cab,800.0,UPI
