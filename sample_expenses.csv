@@ -11,3 +11,5 @@ id,date,category,description,amount,payment_method
 11,2026-09-11,Health,Pharmacy,650.0,Cash
 12,2026-09-12,Food,"Dinner, family outing",1200.0,UPI
 13,2026-09-22,Travel,Cab,800.0,UPI
+14,2026-09-22,Food,Lunch,500.0,UPI
+15,2026-09-22,Food,Lunch,500.0,UPI
