@@ -4,6 +4,8 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional
+from repositories import expense_repository
+from services import expense_service
 
 class ExpenseCreate(BaseModel):
     date:str
@@ -66,21 +68,8 @@ def delete_expense(expense_id:int):
 
 @app.post("/expenses")
 def create_expense(expense:ExpenseCreate):
-    df = pd.read_csv(CSV_FILE)
-    existing_ids = df["id"].tolist()
-    next_id = max(existing_ids) + 1
-    print(next_id)
-    new_expense = {
-    "id": next_id,
-    "date": expense.date,
-    "category": expense.category,
-    "amount": expense.amount,
-    "payment_method": expense.payment_method,
-    "description": expense.description,
-    }
-    df.loc[len(df)] = new_expense
-    df.to_csv(CSV_FILE, index= False)
-    return new_expense
+    expense = expense_service.create_expense(expense)
+    return expense
 
 @app.get("/")
 def root():
@@ -97,17 +86,17 @@ def health_check():
 
 @app.get("/expenses")
 def get_expenses():
-    df = pd.read_csv(CSV_FILE)
+    df = expense_repository.get_all()
     return df.to_dict(orient = "records")
 
 @app.get("/expenses/{expense_id}")
 def get_expenses(expense_id: int):
-    df = pd.read_csv(CSV_FILE)
-    expense = df[df["id"] == expense_id]
+    expense = expense_repository.get_by_id(expense_id)
+    
 
-    if expense.empty:
+    if expense is None:
         raise HTTPException(
             status_code = 404,
             detail="Expense not found"
         )
-    return expense.iloc[0].to_dict()
+    return expense

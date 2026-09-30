@@ -13,3 +13,4 @@ id,date,category,description,amount,payment_method
 13,2026-09-22,Travel,Cab,800.0,UPI
 14,2026-09-22,Food,Lunch,500.0,UPI
 15,2026-09-22,Food,Lunch,500.0,UPI
+16,2026-09-01,Food,Breakfast,250.0,UPI
